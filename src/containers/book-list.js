@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+
+//Glue between react and redux
 import { connect } from 'react-redux'
 
 
@@ -23,5 +25,12 @@ class BookList extends Component{
 }
 
 function mapStateToProps(state){
-    
+    //Whatever is returned will show up as props inside of BookList as this.props.books
+    return {
+        books: state.books
+    }
 }
+
+//Connect takes a function and a component and produces a container
+//Container is a component that is aware of state in redux
+export default connect(mapStateToProps)(BookList)
